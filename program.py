@@ -3,6 +3,9 @@ from flask import (
 							render_template,
 							request
 						)
+
+import dbase
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -24,4 +27,5 @@ def annoy():
 	return 'what what'
 
 if __name__ == '__main__':
+	dbase.init()
 	app.run(debug = True)
