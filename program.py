@@ -15,6 +15,9 @@ def hello_world():
 @app.route('/generate')
 def generate_link():
 	field = request.args.get('Field')
+	sql = ""
+	values =
+	db.read(sql,values)
 	return render_template('rel_info.html', data = field)
 
 @app.route('/user_id/<int:identity>')
