@@ -4,7 +4,7 @@ from flask import (
 							request
 						)
 
-#import dbase
+import dbase
 
 app = Flask(__name__)
 
@@ -12,12 +12,13 @@ app = Flask(__name__)
 def hello_world():
 	return render_template('index.html')
 
-'''@app.route('/generate')
+@app.route('/generate')
 def generate_link():
 	field = request.args.get('Field')
-	sql = "SELECT * FROM LINK WHERE FIELD = (?) ORDER BY RANDOM() LIMIT 1"
-	link = db.read(sql,field)
-	return render_template('rel_info.html', data = link, data = field)'''
+	sql = "SELECT NAME FROM LINKS WHERE FIELD = (?) ORDER BY RANDOM() LIMIT 1"
+	link = dbase.read(sql, (field,))
+	print link
+	return render_template('rel_info.html', link = link, data = field)
 
 @app.route('/user_id/<int:identity>')
 def print_id_int(identity):

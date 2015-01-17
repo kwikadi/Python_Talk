@@ -1,6 +1,6 @@
 import sqlite3
 
-con = sqlite3.connect('test.db')
+con = sqlite3.connect('test.db', check_same_thread=False)
 
 def init():
 	create_tables()
@@ -26,7 +26,7 @@ def read(sql, values=None):
 	return result
 
 def insert_values():
-	con.execute('''INSERT INTO LINK VALUES
+	con.execute('''INSERT INTO LINKS VALUES
 						(,r'http://www.theverge.com', 'Computers'),
 						(,r'http://www.wired.com', 'Music'),
 						(,r'http://www.engadget.com', 'English'),
