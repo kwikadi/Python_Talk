@@ -11,19 +11,19 @@ frontend = Blueprint('frontend', __name__)
 
 @frontend.route('/')
 def hello_frontend():
-    return render_template('index.html')
+   return render_template('index.html')
 
-# @frontend.route('/generate')
-# def generate_link():
-#     field = request.args.get('Field')
-#     sql = "SELECT * FROM LINK WHERE FIELD = (?) ORDER BY RANDOM() LIMIT 1"
-#     link = db.read(sql, field)
-#     return render_template('rel_info.html', data = link, data = field)
+@frontend.route('/generate')
+def generate_link():
+   field = request.args.get('Field')
+   sql = "SELECT * FROM LINK WHERE FIELD = (?) ORDER BY RANDOM() LIMIT 1"
+   link = db.read(sql, field)
+   return render_template('rel_info.html', data = link, data = field)
 
 
 @frontend.route('/user/<int:identity>')
 def print_id_int(identity):
-    return 'Hello robot %d' % identity
+   return 'Hello robot %d' % identity
 
 
 """ API """

@@ -1,6 +1,6 @@
 import sqlite3
 
-con = sqlite3.connect('test.db')
+con = sqlite3.connect('test.db', check_same_thread=False)
 
 
 def init():
@@ -19,7 +19,7 @@ def read(sql, values=None):
 
     result = None
     if values:
-        cur = con.cursor().execute(sql, values)
+        cur = con.cursor().execute(sql, (values,))
     else:
         cur = con.cursor().execute(sql)
 
